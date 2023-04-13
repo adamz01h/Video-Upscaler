@@ -311,13 +311,13 @@ Public Class Form1
 
         End If
         'convert the video
-        'ffmpeg -i <input_file> -c:v libx264 -preset slow -crf 23 -pix_fmt yuvj420p -c:a aac -b:a 160k temp_output.mp4 
+        'ffmpeg -i < input_file > -c: v libx264 -preset slow -crf 23 -pix_fmt yuvj420p -c:a aac -b:a 160k temp_output.mp4 
         Console.WriteLine("create temp video")
         Dim prep_complete = 0
         If frame_rate > 0 Then
             st_1.Checked = True
             msg_info.Text = "Creating temp video..."
-            '    prep_complete = prep_video(ffmpeg_path.Text, src_path.Text, Path.GetDirectoryName(temp_path.Text))
+            ' prep_complete = prep_video(ffmpeg_path.Text, src_path.Text, Path.GetDirectoryName(temp_path.Text))
 
         End If
 
@@ -327,7 +327,7 @@ Public Class Form1
         If prep_complete = 0 Then
             st_2.Checked = True
             msg_info.Text = "Ripping frames..."
-            rip_result = Await rip_frames(ffmpeg_path.Text, temp_path.Text, img_format)
+            Dim rip_result2 = Await rip_frames(ffmpeg_path.Text, temp_path.Text, img_format)
         End If
 
         'upscale
@@ -354,12 +354,12 @@ Public Class Form1
             st_5.Checked = True
             If clear_temp_box.Checked Then
                 msg_info.Text = "Deleting temp frames..."
-                '    Dim deletedCount = Await clear_folders(temp_path.Text)
+                Dim deletedCount = Await clear_folders(temp_path.Text)
             End If
 
             If clear_upscale_box.Checked Then
                 msg_info.Text = "Deleting upscale frames..."
-                '  Dim deletedCount = Await clear_folders(upscale_path.Text)
+                Dim deletedCount = Await clear_folders(upscale_path.Text)
             End If
 
         End If
@@ -648,6 +648,7 @@ Public Class Form1
         Dim arguments = String.Format(" -y -i {0}/temp_output.mp4 -qscale:v 1 -qmin 1 -qmax 1 -fps_mode passthrough {1}/frame%08d.{2} ", temp_path, temp_frames_path, img_format)
         Dim exitCode As Integer = 0
         Dim exit_code = Await UpdateFileCountAsync(temp_frames_path, "0", msg_info, Command, arguments)
+
         Return exitCode
 
     End Function
@@ -725,6 +726,10 @@ Public Class Form1
         clear_upscale.Enabled = False
         Dim deletedCount = Await clear_folders(upscale_path.Text)
         clear_upscale.Enabled = True
+
+    End Sub
+
+    Private Sub src_path_TextChanged(sender As Object, e As EventArgs) Handles src_path.TextChanged
 
     End Sub
 End Class

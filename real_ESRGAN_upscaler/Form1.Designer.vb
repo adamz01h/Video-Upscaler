@@ -191,7 +191,6 @@ Partial Class Form1
         Me.output_path.Name = "output_path"
         Me.output_path.Size = New System.Drawing.Size(604, 20)
         Me.output_path.TabIndex = 2
-        Me.output_path.Text = "E:\Video\FEB_2014_FAMILY_MULTI_FEATURES\out.mp4"
         '
         'br_output
         '
@@ -208,7 +207,6 @@ Partial Class Form1
         Me.src_path.Name = "src_path"
         Me.src_path.Size = New System.Drawing.Size(604, 20)
         Me.src_path.TabIndex = 1
-        Me.src_path.Text = "E:\Video\FEB_2014_FAMILY_MULTI_FEATURES\B1_t00.mkv"
         '
         'br_src
         '
