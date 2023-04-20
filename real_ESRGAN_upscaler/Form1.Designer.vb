@@ -27,8 +27,12 @@ Partial Class Form1
         Me.output_scale = New System.Windows.Forms.ComboBox()
         Me.downmix_audio = New System.Windows.Forms.CheckBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.download_ffmepg = New System.Windows.Forms.Button()
-        Me.use_ffmepg_system = New System.Windows.Forms.CheckBox()
+        Me.cpu_limit_check = New System.Windows.Forms.CheckBox()
+        Me.cpu_limit = New System.Windows.Forms.ComboBox()
+        Me.check_prepvideo = New System.Windows.Forms.CheckBox()
+        Me.deinterlace = New System.Windows.Forms.CheckBox()
+        Me.download_ffmpeg = New System.Windows.Forms.Button()
+        Me.use_ffmpeg_system = New System.Windows.Forms.CheckBox()
         Me.br_ffmpeg = New System.Windows.Forms.Button()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.ffmpeg_path = New System.Windows.Forms.TextBox()
@@ -72,6 +76,8 @@ Partial Class Form1
         Me.load_profile = New System.Windows.Forms.Button()
         Me.save_profile = New System.Windows.Forms.Button()
         Me.GroupBox8 = New System.Windows.Forms.GroupBox()
+        Me.clear_paths = New System.Windows.Forms.Button()
+        Me.save_file_path = New System.Windows.Forms.Button()
         Me.msg_info = New System.Windows.Forms.Label()
         Me.GroupBox10 = New System.Windows.Forms.GroupBox()
         Me.st_5 = New System.Windows.Forms.RadioButton()
@@ -84,6 +90,8 @@ Partial Class Form1
         Me.SaveFileDialog1 = New System.Windows.Forms.SaveFileDialog()
         Me.FolderBrowserDialog1 = New System.Windows.Forms.FolderBrowserDialog()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.clear_processed = New System.Windows.Forms.Button()
+        Me.show_steps = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
@@ -117,8 +125,12 @@ Partial Class Form1
         '
         'GroupBox1
         '
-        Me.GroupBox1.Controls.Add(Me.download_ffmepg)
-        Me.GroupBox1.Controls.Add(Me.use_ffmepg_system)
+        Me.GroupBox1.Controls.Add(Me.cpu_limit_check)
+        Me.GroupBox1.Controls.Add(Me.cpu_limit)
+        Me.GroupBox1.Controls.Add(Me.check_prepvideo)
+        Me.GroupBox1.Controls.Add(Me.deinterlace)
+        Me.GroupBox1.Controls.Add(Me.download_ffmpeg)
+        Me.GroupBox1.Controls.Add(Me.use_ffmpeg_system)
         Me.GroupBox1.Controls.Add(Me.br_ffmpeg)
         Me.GroupBox1.Controls.Add(Me.Label6)
         Me.GroupBox1.Controls.Add(Me.ffmpeg_path)
@@ -132,24 +144,63 @@ Partial Class Form1
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "FFmpeg Options"
         '
-        'download_ffmepg
+        'cpu_limit_check
         '
-        Me.download_ffmepg.Location = New System.Drawing.Point(685, 54)
-        Me.download_ffmepg.Name = "download_ffmepg"
-        Me.download_ffmepg.Size = New System.Drawing.Size(75, 23)
-        Me.download_ffmepg.TabIndex = 11
-        Me.download_ffmepg.Text = "Download"
-        Me.download_ffmepg.UseVisualStyleBackColor = True
+        Me.cpu_limit_check.AutoSize = True
+        Me.cpu_limit_check.Location = New System.Drawing.Point(595, 24)
+        Me.cpu_limit_check.Name = "cpu_limit_check"
+        Me.cpu_limit_check.Size = New System.Drawing.Size(103, 17)
+        Me.cpu_limit_check.TabIndex = 15
+        Me.cpu_limit_check.Text = "CPU Thred Limit"
+        Me.cpu_limit_check.UseVisualStyleBackColor = True
         '
-        'use_ffmepg_system
+        'cpu_limit
         '
-        Me.use_ffmepg_system.AutoSize = True
-        Me.use_ffmepg_system.Location = New System.Drawing.Point(572, 58)
-        Me.use_ffmepg_system.Name = "use_ffmepg_system"
-        Me.use_ffmepg_system.Size = New System.Drawing.Size(107, 17)
-        Me.use_ffmepg_system.TabIndex = 10
-        Me.use_ffmepg_system.Text = "Use System Path"
-        Me.use_ffmepg_system.UseVisualStyleBackColor = True
+        Me.cpu_limit.Enabled = False
+        Me.cpu_limit.FormattingEnabled = True
+        Me.cpu_limit.Location = New System.Drawing.Point(704, 22)
+        Me.cpu_limit.Name = "cpu_limit"
+        Me.cpu_limit.Size = New System.Drawing.Size(56, 21)
+        Me.cpu_limit.TabIndex = 14
+        '
+        'check_prepvideo
+        '
+        Me.check_prepvideo.AutoSize = True
+        Me.check_prepvideo.Location = New System.Drawing.Point(471, 24)
+        Me.check_prepvideo.Name = "check_prepvideo"
+        Me.check_prepvideo.Size = New System.Drawing.Size(112, 17)
+        Me.check_prepvideo.TabIndex = 13
+        Me.check_prepvideo.Text = "Check Prep Video"
+        Me.check_prepvideo.UseVisualStyleBackColor = True
+        '
+        'deinterlace
+        '
+        Me.deinterlace.AutoSize = True
+        Me.deinterlace.Location = New System.Drawing.Point(384, 24)
+        Me.deinterlace.Name = "deinterlace"
+        Me.deinterlace.Size = New System.Drawing.Size(81, 17)
+        Me.deinterlace.TabIndex = 12
+        Me.deinterlace.Text = "DeInterlace"
+        Me.deinterlace.UseVisualStyleBackColor = True
+        '
+        'download_ffmpeg
+        '
+        Me.download_ffmpeg.Location = New System.Drawing.Point(685, 54)
+        Me.download_ffmpeg.Name = "download_ffmpeg"
+        Me.download_ffmpeg.Size = New System.Drawing.Size(75, 23)
+        Me.download_ffmpeg.TabIndex = 11
+        Me.download_ffmpeg.Text = "Download"
+        Me.download_ffmpeg.UseVisualStyleBackColor = True
+        '
+        'use_ffmpeg_system
+        '
+        Me.use_ffmpeg_system.AutoSize = True
+        Me.use_ffmpeg_system.Location = New System.Drawing.Point(572, 58)
+        Me.use_ffmpeg_system.Name = "use_ffmpeg_system"
+        Me.use_ffmpeg_system.Size = New System.Drawing.Size(107, 17)
+        Me.use_ffmpeg_system.TabIndex = 10
+        Me.use_ffmpeg_system.Text = "Use System Path"
+        Me.use_ffmpeg_system.UseVisualStyleBackColor = True
         '
         'br_ffmpeg
         '
@@ -566,6 +617,10 @@ Partial Class Form1
         '
         'GroupBox8
         '
+        Me.GroupBox8.Controls.Add(Me.show_steps)
+        Me.GroupBox8.Controls.Add(Me.clear_processed)
+        Me.GroupBox8.Controls.Add(Me.clear_paths)
+        Me.GroupBox8.Controls.Add(Me.save_file_path)
         Me.GroupBox8.Controls.Add(Me.msg_info)
         Me.GroupBox8.Controls.Add(Me.GroupBox10)
         Me.GroupBox8.Location = New System.Drawing.Point(12, 447)
@@ -574,6 +629,24 @@ Partial Class Form1
         Me.GroupBox8.TabIndex = 12
         Me.GroupBox8.TabStop = False
         Me.GroupBox8.Text = "Controls"
+        '
+        'clear_paths
+        '
+        Me.clear_paths.Location = New System.Drawing.Point(561, 75)
+        Me.clear_paths.Name = "clear_paths"
+        Me.clear_paths.Size = New System.Drawing.Size(89, 23)
+        Me.clear_paths.TabIndex = 7
+        Me.clear_paths.Text = "Clear File Paths"
+        Me.clear_paths.UseVisualStyleBackColor = True
+        '
+        'save_file_path
+        '
+        Me.save_file_path.Location = New System.Drawing.Point(656, 75)
+        Me.save_file_path.Name = "save_file_path"
+        Me.save_file_path.Size = New System.Drawing.Size(104, 23)
+        Me.save_file_path.TabIndex = 6
+        Me.save_file_path.Text = "Save File Paths"
+        Me.save_file_path.UseVisualStyleBackColor = True
         '
         'msg_info
         '
@@ -602,6 +675,7 @@ Partial Class Form1
         'st_5
         '
         Me.st_5.AutoSize = True
+        Me.st_5.Enabled = False
         Me.st_5.Location = New System.Drawing.Point(489, 22)
         Me.st_5.Name = "st_5"
         Me.st_5.Size = New System.Drawing.Size(69, 17)
@@ -613,6 +687,7 @@ Partial Class Form1
         'st_4
         '
         Me.st_4.AutoSize = True
+        Me.st_4.Enabled = False
         Me.st_4.Location = New System.Drawing.Point(389, 22)
         Me.st_4.Name = "st_4"
         Me.st_4.Size = New System.Drawing.Size(94, 17)
@@ -633,6 +708,7 @@ Partial Class Form1
         'st_3
         '
         Me.st_3.AutoSize = True
+        Me.st_3.Enabled = False
         Me.st_3.Location = New System.Drawing.Point(274, 22)
         Me.st_3.Name = "st_3"
         Me.st_3.Size = New System.Drawing.Size(109, 17)
@@ -644,6 +720,7 @@ Partial Class Form1
         'st_2
         '
         Me.st_2.AutoSize = True
+        Me.st_2.Enabled = False
         Me.st_2.Location = New System.Drawing.Point(174, 22)
         Me.st_2.Name = "st_2"
         Me.st_2.Size = New System.Drawing.Size(98, 17)
@@ -655,6 +732,7 @@ Partial Class Form1
         'st_1
         '
         Me.st_1.AutoSize = True
+        Me.st_1.Enabled = False
         Me.st_1.Location = New System.Drawing.Point(91, 22)
         Me.st_1.Name = "st_1"
         Me.st_1.Size = New System.Drawing.Size(77, 17)
@@ -666,6 +744,27 @@ Partial Class Form1
         'OpenFileDialog1
         '
         Me.OpenFileDialog1.FileName = "OpenFileDialog1"
+        '
+        'Timer1
+        '
+        '
+        'clear_processed
+        '
+        Me.clear_processed.Location = New System.Drawing.Point(466, 75)
+        Me.clear_processed.Name = "clear_processed"
+        Me.clear_processed.Size = New System.Drawing.Size(89, 23)
+        Me.clear_processed.TabIndex = 8
+        Me.clear_processed.Text = "Clear Steps Processed"
+        Me.clear_processed.UseVisualStyleBackColor = True
+        '
+        'show_steps
+        '
+        Me.show_steps.Location = New System.Drawing.Point(371, 75)
+        Me.show_steps.Name = "show_steps"
+        Me.show_steps.Size = New System.Drawing.Size(89, 23)
+        Me.show_steps.TabIndex = 9
+        Me.show_steps.Text = "Open Appdata"
+        Me.show_steps.UseVisualStyleBackColor = True
         '
         'Form1
         '
@@ -706,7 +805,7 @@ Partial Class Form1
     Friend WithEvents downmix_audio As CheckBox
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents Label1 As Label
-    Friend WithEvents use_ffmepg_system As CheckBox
+    Friend WithEvents use_ffmpeg_system As CheckBox
     Friend WithEvents br_ffmpeg As Button
     Friend WithEvents Label6 As Label
     Friend WithEvents ffmpeg_path As TextBox
@@ -760,6 +859,14 @@ Partial Class Form1
     Friend WithEvents SaveFileDialog1 As SaveFileDialog
     Friend WithEvents FolderBrowserDialog1 As FolderBrowserDialog
     Friend WithEvents download_real As Button
-    Friend WithEvents download_ffmepg As Button
+    Friend WithEvents download_ffmpeg As Button
     Friend WithEvents Timer1 As Timer
+    Friend WithEvents check_prepvideo As CheckBox
+    Friend WithEvents deinterlace As CheckBox
+    Friend WithEvents cpu_limit_check As CheckBox
+    Friend WithEvents cpu_limit As ComboBox
+    Friend WithEvents save_file_path As Button
+    Friend WithEvents clear_paths As Button
+    Friend WithEvents show_steps As Button
+    Friend WithEvents clear_processed As Button
 End Class
