@@ -620,8 +620,8 @@ Public Class Form1
 
             End If
         Else
-                Exit Sub
-            End If
+            Exit Sub
+        End If
 
         ''get_framerate
         Dim frame_rate As Double = 0.00
