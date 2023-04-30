@@ -1,4 +1,4 @@
-# Video-Upscaler  
+#AI powered Video-Upscaler  
 Uses  
 https://ffmpeg.org/  
 and  
