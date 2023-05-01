@@ -100,6 +100,7 @@ Public Class Form1
         If deserializedData.ContainsKey("cpu_limit") Then
             cpu_limit.SelectedIndex = deserializedData("cpu_limit")
         End If
+        Return True
     End Function
 
     Function clear_file_paths()

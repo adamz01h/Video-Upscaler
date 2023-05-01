@@ -8,11 +8,11 @@ Imports System.Runtime.InteropServices
 
 ' Review the values of the assembly attributes
 
-<Assembly: AssemblyTitle("real_ESRGAN_upscaler")>
-<Assembly: AssemblyDescription("")>
-<Assembly: AssemblyCompany("Microsoft")>
-<Assembly: AssemblyProduct("real_ESRGAN_upscaler")>
-<Assembly: AssemblyCopyright("Copyright © Microsoft 2023")>
+<Assembly: AssemblyTitle("Upscaler")>
+<Assembly: AssemblyDescription("https://github.com/adamz01h/Video-Upscaler")>
+<Assembly: AssemblyCompany("Upscaler")>
+<Assembly: AssemblyProduct("Upscaler")>
+<Assembly: AssemblyCopyright("Copyright © Upscaler 2023")>
 <Assembly: AssemblyTrademark("")>
 
 <Assembly: ComVisible(False)>
